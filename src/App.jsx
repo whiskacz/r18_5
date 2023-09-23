@@ -12,7 +12,11 @@ const App = () => {
   
   const [data, setData] = useState([])
   
-  let response = []
+  const removeTour = (id) => {
+    const newArray = data.filter((element) => element.id !== id )
+    setData(newArray)
+
+  }
   
   const onClickChange = () => {
     async function dataDownload () {
@@ -28,9 +32,17 @@ const App = () => {
   }
 
   return (
-  <>
-    <button onClick={onClickChange}>GET DATA</button>
-    <ToursList data={data} />
-  </>
+  <div style={{
+    width:"100vw",
+    height:"100vh"
+  }}>
+    {data.length < 1  && <button style={{
+      top:"50%",
+      left:"50%",
+      transform:"translate(-50%,-50%)",
+      position:"absolute"
+    }} onClick={onClickChange}>GET DATA</button>}
+    <ToursList data={data} removeTour={removeTour}/>
+  </div>
 )};
 export default App;

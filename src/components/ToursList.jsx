@@ -1,10 +1,10 @@
 import React from 'react'
 import Tour from './Tour'
 
-function ToursList({ data }) {
+function ToursList({ data, removeTour }) {
   return (
     <>
-    <Tour data={ data } />
+    <Tour data={ data } removeTour={removeTour} />
     </>
   )
 }
